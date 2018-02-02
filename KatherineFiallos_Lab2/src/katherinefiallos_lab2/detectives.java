@@ -94,7 +94,7 @@ public class detectives {
     }
 
     public int getListacasos(Object listacasos) {
-        return listacasos;
+        return (int) listacasos;
     }
 
     public String getBuzon(String buzon) {

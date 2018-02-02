@@ -23,6 +23,7 @@ public class KatherineFiallos_Lab2 {
         String opcion2="";
          ArrayList lista=new ArrayList();//detectives
          ArrayList lista2=new ArrayList();//casos
+         ArrayList lista3=new ArrayList();//mensajes
          
          while(!opcion.equalsIgnoreCase("e")){
             
@@ -32,7 +33,6 @@ public class KatherineFiallos_Lab2 {
                     +"c.Eliminar detectives\n"
                     + "d.Log in\n"
                     + "e.salir\n"
-                    + "f.imprimir\n"
                    );
             if(opcion.equals("a")){//agregar
                  String nombre=JOptionPane.showInputDialog("nombre");
@@ -90,35 +90,57 @@ public class KatherineFiallos_Lab2 {
              }
             }
             if(opcion.equals("c")){//Elimiar
-                int pos=Integer.parseInt(JOptionPane.showInputDialog("posicion a eliminar"));
-                if(pos>=0 &&pos>lista.size() && lista.get(pos)instanceof detectives){
-                    lista.remove(pos);
+//                int pos=Integer.parseInt(JOptionPane.showInputDialog("posicion a eliminar"));
+//                if(pos>=0 &&pos>lista.size() && lista.get(pos)instanceof detectives){
+//                    lista.remove(pos);
+            int p = Integer.parseInt(
+                JOptionPane.showInputDialog("Posicion de Detectice a Eliminar"));
+                lista.remove(p);
             }
-            }
+            
+            
+            //------------------------------------------------------------------------------
             if(opcion.equals("d")){
-//                String usuario=JOptionPane.showInputDialog("Ingrese usuario");
-//                String contraseña=JOptionPane.showInputDialog("Ingrese contraseña");
-//                     if(contraseña.equals(lista.get(7))&& usuario.equals(lista.get(8)) ){
-                          opcion2=JOptionPane.showInputDialog("LOG IN"
-                            + "1.listar mis datos\n"
-                            + "2.listar casos \n"
-                            + "3.registro de casos\n"
-                            + "4.modificar casos\n"
-                            + "5.enviar mensajes\n"
-                            + "6.listar mensajes\n"
-                            + "7.Log out");
-                       if(opcion2.equals("1")){
+//                while(!opcion.equalsIgnoreCase("g")){
+                    
+                
+                String usuario1=JOptionPane.showInputDialog("Ingrese usuario");
+                String contraseña1=JOptionPane.showInputDialog("Ingrese contraseña");
+////                    
+                for (int i = 0; i < 10; i++) {
+                    if(lista.get(i).getUsuario().equals(usuario1) && lista.get(i).getContrasena().equals(contraseña1)){
+                        
+                    
+                          opcion2=JOptionPane.showInputDialog("LOG IN\n"
+                            + "a.listar mis datos\n"
+                            + "b.listar casos \n"
+                            + "c.registro de casos\n"
+                            + "d.modificar casos\n"
+                            + "e.enviar mensajes\n"
+                            + "f.listar mensajes\n"
+                            + "g.Log out");
+                       if(opcion2.equals("a")){
+                           String p="";
                            for (Object t : lista) {
-                             JOptionPane.showMessageDialog(null, t);
+                               if(t instanceof detectives){
+                                   p+=lista.indexOf(t)+ " "+((detectives)t)+"\n";
+                               }
                            }
-                       }
-                   if(opcion2.equals("2")){
-                       for (Object t : lista2) {
-                             JOptionPane.showMessageDialog(null, t);
+                           JOptionPane.showMessageDialog(null, p);
+//                                
                            }
                        
+                   if(opcion2.equals("b")){
+                      String p="";
+                           for (Object t : lista) {
+                               if(t instanceof casos){
+                                   p+=lista.indexOf(t)+ " "+((casos)t)+"\n";
+                               }
+                           }
+                           JOptionPane.showMessageDialog(null, p);
+                       
                    }
-                   if(opcion2.equals("3")){
+                   if(opcion2.equals("c")){
                        String lugar=JOptionPane.showInputDialog("Lugar");
                        String descripcion=JOptionPane.showInputDialog("descripción");
                        String tipo=JOptionPane.showInputDialog("tipo (homicidio, robo, secuestro, violacion)");
@@ -130,18 +152,69 @@ public class KatherineFiallos_Lab2 {
                        String nivelevi=JOptionPane.showInputDialog("nivel de peligrosidad (alto,medio,bajo)");
                        lista2.add(new casos(lugar,descripcion,tipo,detective,estado,cantidadevi,nombreevi,descevi,nivelevi));
                    }
+                   if(opcion2.equals("d")){//modificar casos
+                       int pos1=Integer.parseInt(JOptionPane.showInputDialog("MODIFICAR \n"
+                        + "posicion a modificar[lugar,descripcion, tipo, detective,estado,cantidad de evidencia"
+                               + ",nombre de la evidencia,descrpcion de la evidencia, nivel de evidencia]"));
+                        if(pos1>=0 && pos1<lista.size() &&lista.get(pos1) instanceof casos){
+                           if(pos1==0){
+                               String lugar=JOptionPane.showInputDialog("nuevo lugar");
+                                 ((casos)lista.get(pos1)).setLugar(lugar);
+                           }
+                           if(pos1==1){
+                               String descripcion=JOptionPane.showInputDialog("nueva descripcion");
+                                 ((casos)lista.get(pos1)).setDescripcion(descripcion);
+                           }
+                           if(pos1==2){
+                               String tipo=JOptionPane.showInputDialog("nuevo tipo(homicidio, robo, secuestro, violacion)");
+                                 ((casos)lista.get(pos1)).setTipo(tipo);
+                           }
+                           if(pos1==3){
+                               String detective=JOptionPane.showInputDialog("nuevo detective ");
+                                 ((casos)lista.get(pos1)).setDetective(detective);
+                           }
+                           if(pos1==4){
+                               String estado=JOptionPane.showInputDialog("nuevo estado(en proceso,resuelto)");
+                                 ((casos)lista.get(pos1)).setEstado(estado);
+                           }
+                           if(pos1==5){
+                               String cantidadevi=JOptionPane.showInputDialog("nueva cantidad de evidencia");
+                                 ((casos)lista.get(pos1)).setCantidadevi(cantidadevi);
+                           }
+                           if(pos1==6){
+                               String nombreevi=JOptionPane.showInputDialog("nuevo nombre de la evidencia");
+                                 ((casos)lista.get(pos1)).setNombreevi(nombreevi);
+                           }
+                           if(pos1==7){
+                               String descevi=JOptionPane.showInputDialog("nueva descripcion de la evidencia");
+                                 ((casos)lista.get(pos1)).setDescevi(descevi);
+                           }
+                           if(pos1==8){
+                               String nivelevi=JOptionPane.showInputDialog("nuevo nivel de evidencia");
+                                 ((casos)lista.get(pos1)).setNivelevi(nivelevi);
+                           }
+                        }
+                   }
+                           
+                   
+                    if(opcion2.equals("e")){//enviar mensajes
+                        
                        
-            }
-            
-            if(opcion.equals("f")){
-                    for (Object t : lista) {
-                    JOptionPane.showMessageDialog(null, t);
+                       
+                   }
+                     if(opcion2.equals("f")){//lisatr mendajes
+                        
+                       
+                       
+                   }
+                    }
                 }
             }
-                
          }
     }
-}
+}//fin
+                   
+           
 
                  
          
