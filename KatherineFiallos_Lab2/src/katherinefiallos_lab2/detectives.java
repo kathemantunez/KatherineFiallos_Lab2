@@ -111,7 +111,7 @@ public class detectives {
     
     
     public String toString(){
-        return"DETECTIVES\nNombre:"+nombre+" Edad:"+edad+" Nacionalidad:"+nacionalidad+" Años Laborales:"+años +" Nivel:"+nivel+
+        return"\nDETECTIVES\nNombre:"+nombre+" Edad:"+edad+" Nacionalidad:"+nacionalidad+" Años Laborales:"+años +" Nivel:"+nivel+
                 " Lista de casos:"+listacasos+" Buzón:"+buzon+" Usuario:"+usuario+" Contraseña:"+contraseña;
     }
     

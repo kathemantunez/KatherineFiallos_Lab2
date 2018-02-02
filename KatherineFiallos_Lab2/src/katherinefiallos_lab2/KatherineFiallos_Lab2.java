@@ -20,6 +20,7 @@ public class KatherineFiallos_Lab2 {
     public static void main(String[] args) {
         // TODO code application logic here
         String opcion="";
+        String opcion2="";
          ArrayList lista=new ArrayList();
          while(!opcion.equalsIgnoreCase("e")){
             
@@ -27,8 +28,9 @@ public class KatherineFiallos_Lab2 {
                     +"a. Agregar detectives\n"
                     + "b.Modificar detectives\n"
                     +"c.Eliminar detectives\n"
-                    + "d.Log in\n\n"
-                    + "e.salir"
+                    + "d.Log in\n"
+                    + "e.salir\n"
+                    + "f.imprimir\n"
                    );
             if(opcion.equals("a")){//agregar
                  String nombre=JOptionPane.showInputDialog("nombre");
@@ -75,18 +77,42 @@ public class KatherineFiallos_Lab2 {
                     String buzon=JOptionPane.showInputDialog("nuevo buzon");
                       ((detectives)lista.get(pos1)).setBuzon(buzon);
                  }
-                 if(pos1==0){
+                 if(pos1==7){
                     String usuario=JOptionPane.showInputDialog("nuevo usuario");
                       ((detectives)lista.get(pos1)).setUsuario(usuario);
                  }
-                 if(pos1==0){
+                 if(pos1==8){
                     String contraseña=JOptionPane.showInputDialog("nueva contraseña");
                       ((detectives)lista.get(pos1)).setContraseña(contraseña);
                  }
              }
             }
+            if(opcion.equals("c")){//Elimiar
+                int pos=Integer.parseInt(JOptionPane.showInputDialog("posicion a eliminar"));
+                if(pos>=0 &&pos>lista.size() && lista.get(pos)instanceof detectives){
+                    lista.remove(pos);
+            }
+            }
+            if(opcion.equals("d")){
+                opcion2=JOptionPane.showInputDialog("LOG IN"
+                        + "1.listar mis datos\n"
+                        + "2.listar casos \n"
+                        + "3.registro de casos\n"
+                        + "4.modificar casos\n"
+                        + "5.enviar mensajes\n"
+                        + "6.listar mensajes\n"
+                        + "7.Log out");
+                   
+            }
+            if(opcion.equals("f")){
+                    for (Object t : lista) {
+                    JOptionPane.showMessageDialog(null, t);
+                }
+            }
+                
          }
     }
 }
+
                  
          
