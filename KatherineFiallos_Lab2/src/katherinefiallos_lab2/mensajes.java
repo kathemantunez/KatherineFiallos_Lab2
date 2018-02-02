@@ -13,26 +13,26 @@ import javax.swing.JOptionPane;
  */
 public class mensajes {
     private String titulo;
-    private String envia;
-    private String recibe;
+    private String emisor;
+    private String receptor;
     private String cuerpo;
     private int importancia;
      
     public mensajes(String envia, String recibe){
-        this.envia=envia;
-        this.recibe=recibe;
+        this.emisor=envia;
+        this.receptor=recibe;
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public String getEnvia() {
-        return envia;
+    public String getEmisor() {
+        return emisor;
     }
 
-    public String getRecibe() {
-        return recibe;
+    public String getReceptor() {
+        return receptor;
     }
 
     public String getCuerpo() {
@@ -47,7 +47,7 @@ public class mensajes {
         importancia=Integer.parseInt(JOptionPane.showInputDialog("importancia del mensaje:"));
     }
     public String toString(){
-        return "emisor:"+envia+"  recibe"+recibe+"\n mensaje:"+cuerpo;
+        return "emisor:"+emisor+"  recibe"+receptor+"\n mensaje:"+cuerpo+"  Importancia:"+importancia;
     }
     
     

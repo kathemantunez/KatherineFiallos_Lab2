@@ -23,6 +23,7 @@ public class KatherineFiallos_Lab2 {
         // TODO code application logic here
         String opcion="";
         String opcion2="";
+        String mensaje="";
          ArrayList lista=new ArrayList();//detectives
          ArrayList lista2=new ArrayList();//casos
          ArrayList lista3=new ArrayList();//mensajes
@@ -115,7 +116,7 @@ public class KatherineFiallos_Lab2 {
                             + "b.listar casos \n"
                             + "c.registro de casos\n"
                             + "d.modificar casos\n"
-                            + "e.mensajes"
+                            + "e.mensajes\n"
                             + "f.Log out");
                        if(opcion2.equals("a")){
                            String p="";
@@ -193,11 +194,11 @@ public class KatherineFiallos_Lab2 {
                            }
                         }
                    }
+                   
                            
                    
                     if(opcion2.equals("e")){//enviar mensajes
-                        
-                       mensajes=mensajeria(usuario1);
+                        mensaje=mensajeria(usuario1);
                        
                    }
                    
@@ -209,22 +210,22 @@ public class KatherineFiallos_Lab2 {
          }
     }
     }
-    public void mensajeria(String usuario){
-        int opcion;
+    private static String mensajeria(String emisor){
+    int opcion;
         String mensajes= "";
         do {
-            opcion = Integer.parseInt(JOptionPane.showInputDialog("CHAT:\n"
-                    + "1) ESCRIBE MENSAJES\n"
-                    + "2) MENSAJERIA\n"
-                    + "0) SALIR"));
+            opcion = Integer.parseInt(JOptionPane.showInputDialog("MENSAJERIA:\n"
+                    + "1) Nuevo mensaje\n"
+                    + "2) Buzon\n"
+                    + "0) Volver"));
             switch(opcion) {
                 case 1:
-                    enviarMensaje(usuario);
+                    enviarMensaje(emisor);
                     break;
                 case 2:
                     mensajes = "";
                     for (int i = 3; i > 0; i--)
-                        mensajes += mostrarMensajes(usuario, i);
+                        mensajes += mostrarMensajes(emisor, i);
                     JOptionPane.showMessageDialog(null, mensajes);
                     break;
                 case 0:
@@ -234,8 +235,10 @@ public class KatherineFiallos_Lab2 {
                     break;
             }
         } while (opcion != 0);
+        return mensajes;
     }
-     public static String mostrarMensajes(String receptor, int importancia){
+    
+    public static String mostrarMensajes(String receptor, int importancia){
         String output = "";
         for (mensajes msj: bmensajes){
             if (msj.getReceptor().equals(receptor) && msj.getImportancia() == importancia){
@@ -250,9 +253,9 @@ public class KatherineFiallos_Lab2 {
         String detective = "";
         Iterable<mensajes> baseMensaje = new ArrayList<>();
         for (mensajes usuario: baseMensaje){
-            if (!emisor.equals(usuario.getUsuario()) && !usuariosAgregados.contains(usuario.getUsuario())
-                    && detectives(emisor, usuario.getUsuario())) {
-                usuariosAgregados.add((String) usuario.getUsuario());
+            if (!emisor.equals(usuario.getEmisor()) && !usuariosAgregados.contains(usuario.getEmisor())
+                    && detectives(emisor, usuario.getEmisor())) {
+                usuariosAgregados.add((String) usuario.getEmisor());
                 detective += usuario + "\n";
             }
         }
@@ -262,6 +265,9 @@ public class KatherineFiallos_Lab2 {
         msj.nuevoMensaje();
         bmensajes.add(msj);
         
+    }
+    public static boolean detectives(String emisor, Object usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 }//fin
                    
