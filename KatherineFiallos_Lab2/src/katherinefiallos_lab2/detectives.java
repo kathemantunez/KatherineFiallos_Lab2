@@ -15,7 +15,7 @@ public class detectives {
     private String nacionalidad;
     private int años;
     private int nivel;
-    private int listacasos;
+    private Object listacasos;
     private String buzon;
     private String usuario;
     private String contraseña;
@@ -23,7 +23,7 @@ public class detectives {
     public detectives(){
         
     }
-    public detectives(String nombre, int edad, String nacionalidad,int años, int nivel,int listacasos,String buzon,String usuario,String contraseña){
+    public detectives(String nombre, int edad, String nacionalidad,int años, int nivel,Object listacasos,String buzon,String usuario,String contraseña){
         this.nombre=nombre;
         this.edad=edad;
         this.nacionalidad=nacionalidad;
@@ -57,7 +57,7 @@ public class detectives {
         this.nivel = nivel;
     }
 
-    public void setListacasos(int listacasos) {
+    public void setListacasos(Object listacasos) {
         this.listacasos = listacasos;
     }
 
@@ -93,7 +93,7 @@ public class detectives {
         return nivel;
     }
 
-    public int getListacasos(int listacasos) {
+    public int getListacasos(Object listacasos) {
         return listacasos;
     }
 
