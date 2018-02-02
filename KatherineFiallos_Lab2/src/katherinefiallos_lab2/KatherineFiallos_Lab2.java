@@ -13,7 +13,9 @@ import javax.swing.JOptionPane;
  * @author KATHERINE
  */
 public class KatherineFiallos_Lab2 {
-
+ private static ArrayList<mensajes> bmensajes=new ArrayList();
+ static String usuario1="";
+ static String contraseña1="";
     /**
      * @param args the command line arguments
      */
@@ -99,11 +101,11 @@ public class KatherineFiallos_Lab2 {
             
             //------------------------------------------------------------------------------
             if(opcion.equals("d")){
-                while(!opcion.equalsIgnoreCase("g")){
+                while(!opcion.equalsIgnoreCase("f")){
                     
                 
-                String usuario1=JOptionPane.showInputDialog("Ingrese usuario");
-                String contraseña1=JOptionPane.showInputDialog("Ingrese contraseña");
+                usuario1=JOptionPane.showInputDialog("Ingrese usuario");
+                 contraseña1=JOptionPane.showInputDialog("Ingrese contraseña");
 ////                    
                      for (int i = 0; i < lista.size(); i++) {
                      if(((detectives)lista.get(i)).getUsuario().equals(usuario1) && ((detectives)lista.get(i)).getContraseña().equals(contraseña1)){
@@ -113,9 +115,8 @@ public class KatherineFiallos_Lab2 {
                             + "b.listar casos \n"
                             + "c.registro de casos\n"
                             + "d.modificar casos\n"
-                            + "e.enviar mensajes\n"
-                            + "f.listar mensajes\n"
-                            + "g.Log out");
+                            + "e.mensajes"
+                            + "f.Log out");
                        if(opcion2.equals("a")){
                            String p="";
                            for (Object t : lista) {
@@ -196,14 +197,10 @@ public class KatherineFiallos_Lab2 {
                    
                     if(opcion2.equals("e")){//enviar mensajes
                         
-                       
-                       
-                   }
-                     if(opcion2.equals("f")){//lisatr mendajes
-                        
-                       
+                       mensajes=mensajeria(usuario1);
                        
                    }
+                   
                     }
                 }
                      break;
@@ -211,6 +208,60 @@ public class KatherineFiallos_Lab2 {
             }
          }
     }
+    }
+    public void mensajeria(String usuario){
+        int opcion;
+        String mensajes= "";
+        do {
+            opcion = Integer.parseInt(JOptionPane.showInputDialog("CHAT:\n"
+                    + "1) ESCRIBE MENSAJES\n"
+                    + "2) MENSAJERIA\n"
+                    + "0) SALIR"));
+            switch(opcion) {
+                case 1:
+                    enviarMensaje(usuario);
+                    break;
+                case 2:
+                    mensajes = "";
+                    for (int i = 3; i > 0; i--)
+                        mensajes += mostrarMensajes(usuario, i);
+                    JOptionPane.showMessageDialog(null, mensajes);
+                    break;
+                case 0:
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opcion no valida!");
+                    break;
+            }
+        } while (opcion != 0);
+    }
+     public static String mostrarMensajes(String receptor, int importancia){
+        String output = "";
+        for (mensajes msj: bmensajes){
+            if (msj.getReceptor().equals(receptor) && msj.getImportancia() == importancia){
+                output += msj + "\n";
+            }
+        }
+        return output;
+    }
+    
+    public static void enviarMensaje(String emisor){
+        ArrayList<String> usuariosAgregados = new ArrayList<>(); 
+        String detective = "";
+        Iterable<mensajes> baseMensaje = new ArrayList<>();
+        for (mensajes usuario: baseMensaje){
+            if (!emisor.equals(usuario.getUsuario()) && !usuariosAgregados.contains(usuario.getUsuario())
+                    && detectives(emisor, usuario.getUsuario())) {
+                usuariosAgregados.add((String) usuario.getUsuario());
+                detective += usuario + "\n";
+            }
+        }
+        String usuario = " ";
+        String receptor = JOptionPane.showInputDialog("A que usuario le quiere enviar un mensaje?\n" + usuario);
+        mensajes msj = new mensajes(emisor, receptor);
+        msj.nuevoMensaje();
+        bmensajes.add(msj);
+        
     }
 }//fin
                    
