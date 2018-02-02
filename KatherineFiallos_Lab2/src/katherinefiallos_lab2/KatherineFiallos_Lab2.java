@@ -90,9 +90,7 @@ public class KatherineFiallos_Lab2 {
              }
             }
             if(opcion.equals("c")){//Elimiar
-//                int pos=Integer.parseInt(JOptionPane.showInputDialog("posicion a eliminar"));
-//                if(pos>=0 &&pos>lista.size() && lista.get(pos)instanceof detectives){
-//                    lista.remove(pos);
+                
             int p = Integer.parseInt(
                 JOptionPane.showInputDialog("Posicion de Detectice a Eliminar"));
                 lista.remove(p);
@@ -101,16 +99,15 @@ public class KatherineFiallos_Lab2 {
             
             //------------------------------------------------------------------------------
             if(opcion.equals("d")){
-//                while(!opcion.equalsIgnoreCase("g")){
+                while(!opcion.equalsIgnoreCase("g")){
                     
                 
                 String usuario1=JOptionPane.showInputDialog("Ingrese usuario");
                 String contraseña1=JOptionPane.showInputDialog("Ingrese contraseña");
 ////                    
-                for (int i = 0; i < 10; i++) {
-                    if(lista.get(i).getUsuario().equals(usuario1) && lista.get(i).getContrasena().equals(contraseña1)){
-                        
-                    
+                     for (int i = 0; i < lista.size(); i++) {
+                     if(((detectives)lista.get(i)).getUsuario().equals(usuario1) && ((detectives)lista.get(i)).getContraseña().equals(contraseña1)){
+                             
                           opcion2=JOptionPane.showInputDialog("LOG IN\n"
                             + "a.listar mis datos\n"
                             + "b.listar casos \n"
@@ -209,8 +206,11 @@ public class KatherineFiallos_Lab2 {
                    }
                     }
                 }
+                     break;
+            
             }
          }
+    }
     }
 }//fin
                    

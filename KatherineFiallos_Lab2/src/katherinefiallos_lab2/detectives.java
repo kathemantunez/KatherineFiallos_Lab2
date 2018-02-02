@@ -73,39 +73,39 @@ public class detectives {
         this.contraseña = contraseña;
     }
 
-    public String getNombre(String nombre) {
+    public String getNombre() {
         return nombre;
     }
 
-    public int getEdad(int edad) {
+    public int getEdad() {
         return edad;
     }
 
-    public String getNacionalidad(String nacionalidad) {
+    public String getNacionalidad() {
         return nacionalidad;
     }
 
-    public int getAños(int años) {
+    public int getAños() {
         return años;
     }
 
-    public int getNivel(int nivel) {
+    public int getNivel() {
         return nivel;
     }
 
-    public int getListacasos(Object listacasos) {
+    public int getListacasos() {
         return (int) listacasos;
     }
 
-    public String getBuzon(String buzon) {
+    public String getBuzon() {
         return buzon;
     }
 
-    public String getUsuario(String usuario) {
+    public String getUsuario() {
         return usuario;
     }
 
-    public String getContraseña(String contraseña) {
+    public String getContraseña() {
         return contraseña;
     }
     
